@@ -1,0 +1,45 @@
+<form *ngIf="petJSONinfo" novalidate="" (submit)="editThePet(petJSONinfo._id)" class="add_form">
+    <table>
+        <tr>
+            <td>Name: </td>
+            <td> <input type="text" name="name" value="{{petJSONinfo.name}}" [(ngModel)]="editPet.name" #firstName='ngModel' minlength="3" maxlength="24"> </td>
+            <td *ngIf="petJSONinfo.name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors.minlength">Your pet's name be at least 3 characters long!</div>
+                <div *ngIf="name.errors.maxlength">Your pet's name must be less than 24 characters long!</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Type: </td>
+            <td> <input type="text" name="type" value="{{petJSONinfo.type}}" [(ngModel)]="editPet.type" #type='ngModel' minlength="3" maxlength="24"> </td>
+            <td *ngIf="petJSONinfo.type.invalid && (type.dirty || type.touched)">
+                <div *ngIf="type.errors.minlength">Must be at least 3 characters long!</div>
+                <div *ngIf="type.errors.maxlength">Must be less than 24 characters long!</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td> <input type="text" name="desc" value="{{petJSONinfo.desc}}" [(ngModel)]="editPet.desc" #desc='ngModel' minlength="3" maxlength="120"> </td>
+            <td *ngIf="petJSONinfo.desc.invalid && (desc.dirty || desc.touched)">
+                <div *ngIf="desc.errors.minlength">Must be at least 3 characters long!</div>
+                <div *ngIf="desc.errors.maxlength">Must be less than 120 characters long!</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Skill 1: </td>
+            <td> <input type="text" name="skillA" value="{{petJSONinfo.skillA}}" [(ngModel)]="editPet.skillA"> </td>
+        </tr>
+        <tr>
+            <td>Skill 2: </td>
+            <td> <input type="text" name="skillB" value="{{petJSONinfo.skillB}}" [(ngModel)]="editPet.skillB"> </td>
+        </tr>
+        <tr>
+            <td>Skill 3: </td>
+            <td> <input type="text" name="skillC" value="{{petJSONinfo.skillC}}" [(ngModel)]="editPet.skillC"> </td>
+        </tr>
+        <tr>
+            <td>When done: </td>
+            <td> <input type="submit" name="submit" value="Add New Author"> </td>
+        </tr>
+    </table>
+    <p *ngIf="error">{{ error.error }}</p>
+</form>

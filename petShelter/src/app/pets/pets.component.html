@@ -1,0 +1,22 @@
+<div id="pets" *ngIf="pets">
+    <button [routerLink]="['/petsnew']" name="button">Add Pet</button>
+    <table>
+        <thead>
+            <tr>
+                <td><b> Pets </b></td>
+                <td><b> Likes </b></td>
+                <td><b> Actions Avalible </b></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let p of pets">
+            <tr>
+                <td>{{ p.name }}</td>
+                <td>{{ p.type }}</td>
+                <td>
+                    <button [routerLink]="['/pets', p._id]" name="button">DELETE</button>
+                    <button [routerLink]="['/pets/update/', p._id]" name="button">EDIT</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
